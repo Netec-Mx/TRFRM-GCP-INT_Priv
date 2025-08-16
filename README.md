@@ -1,206 +1,71 @@
-# Funciones que podría usar el instructor
-En este documento se muestran algunas muestras de formatos que se pueden usar en el archivo **README.me** que pueden ser de ayuda para el instructor
+# ![Logo](images/neteclogo.png) 
 
-- [Fragmentos de código](#fragmentos-de-codigo)
-- [Listas](#listas)
-- [Tablas](#tablas)
-- [Insertar imágenes](#imagenes)
-- [Alertas](#alertas)
+**Plataforma de Laboratorios**
 
-# Fragmentos de codigo
+Bienvenido a la **Plataforma de Laboratorios** del curso **Terraform con GCP Intermedio**. Aquí podrás explorar diferentes tecnologías a través de prácticas guiadas. ¡Desarrolla tus habilidades y lleva tus conocimientos al siguiente nivel!
 
+---
 
-## Bloques de código
-Para agregar algún fragmento de código debemos de usar la siguiente sintáxis:
+## 🌟 **Lista de Laboratorios - Terraform con GCP Intermedio**
 
+Cada uno de estos laboratorios está diseñado para ofrecerte una experiencia práctica. Haz clic en los enlaces para comenzar.
 
-### Python
+01. **[Práctica 1: Crear y Usar Módulos Reutilizables en Terraform](/Capítulo1/lab1.md)**
+      - **Descripción**: Crear módulos en Terraform para red y VM en GCP, reutilizables en proyectos principales.
+      - ⏱️ **Duración estimada**: 40 minutos
 
-```python
-import datetime
+02. **[Práctica 2: Migrar el Estado Local a Google Cloud Storage (GCS) con locking habilitado](/Capítulo2/lab2.md)**
+      - **Descripción**: Migrar estado local de Terraform a GCS con versionado y locking para trabajo colaborativo.
+      - ⏱️ **Duración estimada**: 30 minutos
 
-def str2date(sf:str):#"2020-05-08"
-    datos=sf.split('-')#['2020', '05', '08']
-                #'2020':str->2020:int, '05':str->05:int, '08':str->05:int
-    fecha=datetime.date(int(datos[0]), int(datos[1]), int(datos[2]))
-    return fecha
+03. **[Práctica 3: Crear y Gestionar Entornos con Workspaces](/Capítulo3/lab3.md)**
+      - **Descripción**: Gestiona múltiples entornos en GCP con workspaces, aislando estados y recursos por ambiente.
+      - ⏱️ **Duración estimada**: 30 minutos
 
-sf=input("ingrese la fecha YYYY-MM-DD: ")
-fecha=str2date(sf)
-print(fecha)
-print(type(fecha))
-```
+04. **[Práctica 4: Crear múltiples subredes y validar valores de entrada](/Capítulo4/lab4.md)**
+      - **Descripción**: Crear subredes dinámicas en GCP con `for_each`, validaciones y condicionales en Terraform.
+      - ⏱️ **Duración estimada**: 40 minutos
 
-### Java
-```java
-public void cleanup() {
-        try {
-            if (connection != null)
-                connection.close();
-        } catch (Exception e) {
-            System.out.println("Excepción capturada: ");
-            e.printStackTrace();
-        }
-    }
-```
+05. **[Práctica 5: Crear pipeline que haga plan en pull requests y apply en merges](/Capítulo5/lab5.md)**
+      - **Descripción**: Automatiza despliegues en GCP con Terraform y GitHub Actions: plan en PR y apply en merges.
+      - ⏱️ **Duración estimada**: 50 minutos
 
+06. **[Práctica 6: Crear archivos .tfvars por entorno y outputs condicionales](/Capítulo6/lab6.md)**
+      - **Descripción**: Gestiona entornos en GCP con .tfvars, variables sensibles y recursos condicionales en Terraform.
+      - ⏱️ **Duración estimada**: 30 minutos
 
-### shell
-```shell
-#!/bin/sh
+07. **[Práctica 7: Usar secretos desde GCP Secrets Manager](/Capítulo7/lab7.md)**
+      - **Descripción**: Integra **Secret Manager** en Terraform para acceder a Cloud SQL desde VM en GCP sin exponer claves.
+      - ⏱️ **Duración estimada**: 35 minutos
 
-CONTADOR=0
-until [ $CONTADOR – ge 3]]; do
-    echo El contador es $CONTADOR
-    CONTADOR=$(($CONTADOR+1))
-done
-```
+08. **[Práctica 8: Refactorizar un proyecto real monolítico en modular y validado](/Capítulo8/lab8.md)**
+      - **Descripción**: Refactoriza un proyecto Terraform monolítico en modular, validado y documentado con buenas prácticas.
+      - ⏱️ **Duración estimada**: 30 minutos
 
-### Ruby
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+09. **[Práctica 9: Escanear código con tfsec](/Capítulo9/lab9.md)**
+      - **Descripción**: Escanea código Terraform con tfsec para detectar y corregir configuraciones inseguras en GCP.
+      - ⏱️ **Duración estimada**: 10 minutos
 
-### HTML
+10. **[Práctica 10: Generar Documentación Automática con `terraform-docs`](/Capítulo9/lab10.md)**
+      - **Descripción**: Genera documentación automática de módulos Terraform con terraform-docs para mantenerla actualizada.
+      - ⏱️ **Duración estimada**: 10 minutos
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+11. **[Práctica 11: Estimar Costos con Infracost](/Capítulo9/lab11.md)**
+      - **Descripción**: Estima costos en GCP desde Terraform con Infracost para optimizar gastos.
+      - ⏱️ **Duración estimada**: 10 minutos
 
-```
+12. **[Práctica 12: Crear un Wrapper Básico con Terragrunt](/Capítulo9/lab12.md)**
+      - **Descripción**: Usa Terragrunt como wrapper de Terraform en GCP para gestionar módulos y múltiples entornos.
+      - ⏱️ **Duración estimada**: 15 minutos
 
-### Javascript
+**[Recomendaciones: Ejemplos adicionales de Proyectos en Terraform y Buenas Prácticas de Organización](/notas.md)**
 
-```javascript
-var database=db.getSiblingDB("database")
-var collection=database.getCollection("people")
+---
 
-var data=[
-    {name:"edgar"},
-    {name:"juan"},
-    {name:"alicia"}
-]
+¡Gracias por visitar nuestra plataforma! No olvides revisar todos los laboratorios y comenzar tu viaje de aprendizaje hoy mismo.
 
-data.forEach(t=>{
-    console.log(t)
-    var result=collection.insertOne(t)
-    console.log(result)
-})
+---
 
-```
-# Listas
+## 📬 **Contacto y Más Información**
 
-## Lista simple
-- elemento 1
-- elemento 2
-- elemento 3
-
-## Lista números
-1. elemento 1
-2. elemento 2
-3. elemento 3
-
-## Lista anidada
-- Elemento principal
-    - Elemento interno 1
-    - Elemento interno 2
-        - elemento 
-        - elemento
-    - elemento interno 3
-
-## Lista de tareas
-- [ ] tarea 1
-- [x] tarea 2
-- [ ] tarea 3 
-- [ ] \(Optional) tarea opcional 
-
-# Tablas
-
-## Tabla simple
-
-| título columna 1  | título columna 2|
-| ------------- | ------------- |
-| contenido 1  | contenido 2  |
-| contenido 3  | contenido 4  |
-
-
-## Tabla con formato en las columnas
-
-| Command | Description |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
-
-
-## Alinear contenido en tabla
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
-
-# Imagenes
-
-Para insertar una imágen se usa la siguiente sintáxis:
-
-```
-![descripción de la imagen](url imagen)
-```
-El url de la imágen puede ser de la siguiente forma:
-
-- Si la imágen esta dentro de la misma rama se usa la siguiente sintaxis:
-    ```
-     ![description](/assets/images/imagen1.png)
-    ```
-    - Donde:
-        - la ruta */assets/images* esta dentro de la rama donde se encuentra el archivo **README.md**
-
-- Si la imágen esta en otra rama se usa la siguiente sintaxis:
-    ```
-    ![description](/../name_branch/assets/images/imagen1.png)
-    ```
-    - Donde: 
-        - La ruta */../name_branch/assets/images/* esta dentro de el mismo repositorio pero es una rama diferente. 
-
-- Si la imagén esta en internet se usa la siguiente sintaxis: 
-    ``` 
-     ![description](https://url/imagen.png)
-    ```
-- Si se quiere controlar el tamaño de la imágen se debe usar html, de la siguiente forma:
-    ``` html
-    <img src="url image" width="200" height="200">
-     
-    ```
-    - Donde: 
-        - En el html se pueden editar los siguiente elementos: 
-            - **url image**:  La ruta de la imágen
-            - **width**: Ancho de la imágen en pixeles
-            - **height**: Alto de la imágen en pixeles
-
-
-# Alertas
-
-> [!NOTE]
-> útil para agregar alguna nota extra
-
-> [!TIP]
-> útil para dar algún tip
-
-> [!IMPORTANT]
-> útil para algún recordatorio
-
-> [!WARNING]
-> útil para alertar a los alumnos
-
-> [!CAUTION]
-> útil para sugerencias y precauciones.
+Si tienes alguna pregunta o necesitas más detalles, no dudes en [contactarnos](mailto:soporte@netec.com). También puedes encontrar más recursos en nuestra página de [Netec](https://netec.com).
