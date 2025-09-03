@@ -369,7 +369,7 @@ Definir el flujo CI/CD dentro del archivo terraform.yml para la ejecución del p
 
 - **Paso 27.** Edita el archivo `.github/workflows/terraform.yml`:
 
-  - Agrega el siguiente contenido al archivo.
+  - Agrega el siguiente contenido al archivo terraform.yml.
   - El `push` a rama `main`: Ejecuta y aplica cambios.
   - Para el `pull_request`: Ejecuta solo terraform plan.
   - **GitHub Actions** es como un **"robot asistente"** que ejecuta tareas automáticamente cuando se cumplen ciertas condiciones.
