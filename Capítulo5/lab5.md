@@ -369,55 +369,11 @@ Definir el flujo CI/CD dentro del archivo terraform.yml para la ejecución del p
 
 - **Paso 27.** Edita el archivo `.github/workflows/terraform.yml`:
 
-  - Agrega el siguiente contenido al archivo terraform.yml.
+  - Descarga el achivo [terraform.yml](https://s3.us-west-2.amazonaws.com/labs.netec.com/courses/TRFRM-GCP-INT/terraform.yml), abrelo con el editor de texto.
+  - Copia y pega el contenido al archivo **terraform.yml** de tu repositorio.
   - El `push` a rama `main`: Ejecuta y aplica cambios.
   - Para el `pull_request`: Ejecuta solo terraform plan.
   - **GitHub Actions** es como un **"robot asistente"** que ejecuta tareas automáticamente cuando se cumplen ciertas condiciones.
-
-  ```yaml
-  name: Terraform CI/CD
-
-  on:
-    push:
-      branches:
-        - main
-    pull_request:
-
-  jobs:
-    terraform:
-      name: Terraform Plan / Apply
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout código
-          uses: actions/checkout@v3
-
-        - name: Instalar Terraform
-          uses: hashicorp/setup-terraform@v2
-          with:
-            terraform_version: 1.5.0
-
-        - name: Autenticarse en GCP
-          uses: google-github-actions/auth@v1
-          with:
-            credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
-
-        - name: Inicializar Terraform
-          run: terraform init
-
-        - name: Validar sintaxis
-          run: terraform validate
-
-        - name: Plan (Pull Request)
-          if: github.event_name == 'pull_request'
-          run: terraform plan
-
-        - name: Apply (Main branch)
-          if: github.event_name == 'push' && github.ref_name == 'main'
-          run: terraform apply -auto-approve
-
-        - name: Debug evento
-          run: echo "event=${{ github.event_name }} ref=${{ github.ref }} ref_name=${{ github.ref_name }}"
-  ```
 
 > **TAREA FINALIZADA**
 
