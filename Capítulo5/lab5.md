@@ -83,7 +83,7 @@ Generar las credenciales necesarias para que GitHub Actions se autentique en GCP
   - Antes de ejecutar estas varibales, editalas en un bloc de notas.
   - Sustituye el valor del parametro **PROJECT_ID** con el de tu proyecto asignado al curso.
   - Tambien puedes usar este comando para obtenerlo: `PROJECT_ID="$(gcloud config get-value project)"`
-  - Y este comando para visualizarlo: `echo "Proyecto actual: $PROJECT_ID`
+  - Y este comando para visualizarlo: `echo "Proyecto actual: $PROJECT_ID"`
   - Reutilizar variables evita errores de tipeo y facilita repetir comandos.
 
   ```bash

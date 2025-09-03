@@ -80,11 +80,11 @@ Definir variables para la ubicación, CIDR y lista de subredes con validaciones 
   ```hcl
   variable "region" {
     type    = string
-    default = "us-central1" # Usa esta region de ejemplo us-west1
+    default = "us-central1"
 
     validation {
       condition     = contains(["us-central1", "us-east1"], var.region)
-      error_message = "La región debe ser us-central1, us-east1 o us-west1."
+      error_message = "La región debe ser us-central1 ó us-east1"
     }
   }
 
@@ -370,7 +370,7 @@ En esta tarea se modificaran los archivos para aplicar mas fuerte la restricció
 
   - Sustituye el valor del parametro **project_id** con el de tu proyecto asignado al curso.
   - Tambien puedes usar este comando para obtenerlo: `PROJECT_ID="$(gcloud config get-value project)"`
-  - Y este comando para visualizarlo: `echo "Proyecto actual: $PROJECT_ID`
+  - Y este comando para visualizarlo: `echo "Proyecto actual: $PROJECT_ID"`
 
 
   ```hcl
@@ -471,7 +471,7 @@ En esta tarea se modificaran los archivos para aplicar mas fuerte la restricció
 
 **Resultado esperado:** Se agregaron mas restricciones que permitio reforzar la cración de infraestructura, se valido el funcionamiento correcto.
 
-### Tarea 8: Validaciones y condiciones mas estrictas
+### Tarea 8: Eliminacion de recursos
 
 Eliminar recursos creados por el laboratorio 4. Destruir la VPC de ejemplo.
 
