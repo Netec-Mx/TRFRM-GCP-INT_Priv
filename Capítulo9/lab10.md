@@ -292,18 +292,22 @@ Ejecutar **terraform-docs** automáticamente antes de cada commit. De esta maner
 
   ```yaml
   repos:
-  - repo: https://github.com/terraform-docs/terraform-docs
-    rev: v0.16.0
-    hooks:
-      - id: terraform-docs-go
-        args: ["--output-file", "README.md", "--output-mode", "replace"]
-        # cambia 'files' si quieres limitar a ciertos paths:
-        files: ^modules/gcs-bucket/.*$
-  - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.91.0
-    hooks:
-      - id: terraform_fmt
-      - id: terraform_validate
+    # fmt/validate de Terraform
+    - repo: https://github.com/antonbabenko/pre-commit-terraform
+      rev: v1.100.0
+      hooks:
+        - id: terraform_fmt
+        - id: terraform_validate
+
+    # terraform-docs como hook local
+    - repo: local
+      hooks:
+        - id: terraform-docs-gcs-bucket
+          name: terraform-docs (markdown table → README.md en modules/gcs-bucket)
+          entry: terraform-docs markdown table --output-file README.md --output-mode replace modules/gcs-bucket
+          language: system
+          pass_filenames: false
+          stages: [commit]
   ```
 
 - **Paso 19.** Inicializa el repositorio localmente y activa el hook en tu repo (simulado)
@@ -311,6 +315,7 @@ Ejecutar **terraform-docs** automáticamente antes de cada commit. De esta maner
   ```bash
   git init
   pre-commit install
+  pre-commit install-hooks
   ```
   
   ---
@@ -319,8 +324,8 @@ Ejecutar **terraform-docs** automáticamente antes de cada commit. De esta maner
 
 - **Paso 20.** Ahora ejecuta los hooks sobre todos los archivos, escribe el siguiente comando en la terminal.
 
-  - La inicialización puede tardar varios minutos. Espera a que termine
   - Eventualmente finalizara.
+  - Si es necesario puedes limpiar cache con: `pre-commit clean`
 
   ```bash
   pre-commit autoupdate
@@ -331,13 +336,10 @@ Ejecutar **terraform-docs** automáticamente antes de cada commit. De esta maner
 
   ![terragcp](../images/lab10/9.png)
 
-  ---
-
-  ![terragcp](../images/lab10/10.png)  
-
 - **Paso 21.** Ahora realiza una prueba local para verificar el hook del **pre-commit**, escribe el siguiente comando.
 
   - Integrar terraform-docs a `pre-commit` evita olvidos y asegura docs al día en cada PR.
+  - La imagen representa la salida pero puede variar dependiendo las veces que hagamos el **commit**
 
   ```bash
   git add .

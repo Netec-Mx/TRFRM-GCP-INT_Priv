@@ -42,6 +42,7 @@ Crear la carpeta **lab11-gcp** y un proyecto Terraform mínimo de GCP para calcu
 
   ```bash
   mkdir -p lab11-gcp && cd lab11-gcp
+  ```
 
   ---
 
@@ -326,7 +327,6 @@ Usar `--compare-to` para ver deltas (ideal en PRs)
 
   ```bash
   infracost breakdown --path . --format json --out-file infracost-base.json
-  infracost diff --path . --compare-to infracost-base.json
   ```
 
   ---
@@ -337,6 +337,7 @@ Usar `--compare-to` para ver deltas (ideal en PRs)
 
   - El reporte **diff** muestra aumentos o reducciones en Monthly Cost por recurso y total.
   - Este flujo permite a revisores ver el impacto económico del cambio antes de aprobar.
+  - **Modifica el valor de algun recursos y ejecuta el comando para ver las diferencias de costos**
 
   ```bash
   infracost diff --path . --compare-to infracost-base.json
